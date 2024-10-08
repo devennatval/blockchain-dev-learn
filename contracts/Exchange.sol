@@ -125,7 +125,7 @@ contract Exchange {
 		// Instantiate a new order
 		orderCount++;
 		orders[orderCount] = _Order(
-			1, // id 1, 2, 3
+			orderCount, // id 1, 2, 3
 			msg.sender, // user '0x0...'
 			_tokenGet,
 			_amountGet,
@@ -136,7 +136,7 @@ contract Exchange {
 
 		// Emit an event
 		emit Order(
-			1,
+			orderCount,
 			msg.sender,
 			_tokenGet,
 			_amountGet,
@@ -173,8 +173,8 @@ contract Exchange {
 
 	function fillOrder(uint256 _id) public {
 		require(_id > 0 && _id <= orderCount, "Order does not exist");
-		require(!orderCancelled[_id]);
-		require(!orderFilled[_id]);
+		require(!orderCancelled[_id], "Order is cancelled");
+		require(!orderFilled[_id], "Order is already filled");
 
 		// Fetch order
 		_Order storage _order = orders[_id];
