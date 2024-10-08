@@ -17,6 +17,13 @@ contract Exchange {
 		uint256 balance
 	);
 
+	event Withdrawal(
+		address token,
+		address user,
+		uint256 amount,
+		uint256 balance
+	);
+
 	constructor(
 		address _feeAcount,
 		uint256 _feePercent
@@ -37,6 +44,20 @@ contract Exchange {
 
 		// Emit an event
 		emit Deposit(_token, msg.sender, _amount, tokens[_token][msg.sender]);
+	}
+
+	function withdrawToken(
+		address _token,
+		uint256 _amount
+	) public {
+		// Transfer token to user
+		require(Token(_token).transfer(msg.sender, _amount));
+
+		// Update user balance
+		tokens[_token][msg.sender] -= _amount;
+
+		// Emit an event
+		emit Withdrawal(_token, msg.sender, _amount, tokens[_token][msg.sender]);
 	}
 
 	function balanceOf(
