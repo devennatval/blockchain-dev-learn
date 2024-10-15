@@ -30,7 +30,7 @@ const decorateOrder = (order, tokens) => {
 
 	// Note: DNV should be considered token0, mETH is considered token1
 	// Example: Giving mETH in exchange for DApp
-	if(order.tokenGive === tokens[1].address) {
+	if(order.tokenGive === tokens[0].address) {
 		token0Amount = order.amountGive // The amount of DNV we are giving
 		token1Amount = order.amountGet // The amount of mETH we want
 	} else {
@@ -144,7 +144,7 @@ export const priceChartSelector = createSelector(
 )
 
 const buildGraphData = (orders) => {
-	//Group the orders by hour for the graph
+	// Group the orders by hour for the graph
 	orders = groupBy(orders, (o) => moment.unix(o.timestamp).startOf('day').format())
 
 	const hours = Object.keys(orders)
@@ -157,6 +157,7 @@ const buildGraphData = (orders) => {
 		const high = maxBy(group, 'tokenPrice')
 		const low = minBy(group, 'tokenPrice')
 		const close = group[group.length - 1]
+
 		return {
 			x: new Date(hour),
 			y: [open.tokenPrice, high.tokenPrice, low.tokenPrice, close.tokenPrice]
