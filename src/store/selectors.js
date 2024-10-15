@@ -38,8 +38,10 @@ const decorateOrder = (order, tokens) => {
 		token1Amount = order.amountGive // The amount of mETH we are giving
 	}
 
+	// Calculate token price to 5 decimal places
+	const precision = 100000
 	let tokenPrice = token1Amount / token0Amount
-	tokenPrice = Math.round(tokenPrice * 100000) / 100000
+	tokenPrice = Math.round(tokenPrice * precision) / precision
 
 	return {
 		...order,
