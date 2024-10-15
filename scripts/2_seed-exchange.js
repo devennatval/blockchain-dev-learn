@@ -138,7 +138,7 @@ async function main() {
 
   //User 2 make 10 orders
   for(let i = 1; i <= 10; i++) {
-    transaction = await exchange.connect(user1).makeOrder(mETH.address, tokens(10), dnv.address, tokens(10 * i))
+    transaction = await exchange.connect(user2).makeOrder(dnv.address, tokens(10), mETH.address, tokens(10 * i))
     result = await transaction.wait()
 
     console.log(`Made order from ${user2.address}`)
