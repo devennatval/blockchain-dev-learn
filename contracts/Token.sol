@@ -39,7 +39,7 @@ contract Token {
 		public
 		returns (bool success) 
 	{
-		require(balanceOf[msg.sender] >= _value);
+		require(balanceOf[msg.sender] >= _value, 'insufficient balance');
 		
 		_transfer(msg.sender, _to, _value);
 
@@ -51,7 +51,7 @@ contract Token {
 		address _to,
 		uint256 _value
 	) internal {
-		require(_to != address(0));
+		require(_to != address(0), 'unauthorized account');
 
 		balanceOf[_from] -= _value;
 		balanceOf[_to] += _value;
@@ -66,7 +66,7 @@ contract Token {
 		public
 		returns (bool success)
 	{
-		require(_spender != address(0));
+		require(_spender != address(0), 'unauthorized account');
 
 		allowance[msg.sender][_spender] = _value;
 

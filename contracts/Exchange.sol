@@ -70,10 +70,10 @@ contract Exchange {
 	}
 
 	constructor(
-		address _feeAcount,
+		address _feeAccount,
 		uint256 _feePercent
 	) {
-		feeAccount = _feeAcount;
+		feeAccount = _feeAccount;
 		feePercent = _feePercent;
 		orderCount = 0;
 	}
