@@ -13,8 +13,8 @@ module.exports = {
       accounts: privateKeys.split(",")
     },
     amoy: {
-      apiKey: "jMCwxvF2LD7SBCXGpTy36_IyID8a0sN1", // Replace with your Alchemy API Key.
-      network: Network.MATIC_AMOY, // Replace with your network.
+      url: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+      accounts: privateKeys.split(",")
     }
   }
 };
