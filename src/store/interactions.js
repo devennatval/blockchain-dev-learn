@@ -174,6 +174,6 @@ export const cancelOrder = async (provider, exchange, order, dispatch) => {
 		const transaction = await exchange.connect(signer).cancelOrder(order.id)
 		await transaction.wait()
 	} catch (e) {
-		dispatch({ type: 'ORDER__FAIL' })
+		dispatch({ type: 'ORDER_CANCEL_FAIL' })
 	}
 }
