@@ -39,7 +39,7 @@ const Alert = () => {
                 <div className="alert alert--remove" onClick={removeHandler} ref={alertRef}>
                   <h1>Transaction Successful</h1>
                     <a
-                      href={config[chainId] ? `${config[chainId].explorerUrl}/tx/${events[0].transactionHash}` : `#`}
+                      href={config[chainId] ? `${config[chainId].explorerURL}/tx/${events[0].transactionHash}` : `#`}
                       target='_blank'
                       rel='noreferrer'
                     >
