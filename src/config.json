@@ -28,5 +28,20 @@
       "address": "0x55755bE9D4C3D86639C583020226576Df3DC6993"
     },
     "explorerURL": "https://sepolia.etherscan.io"
+  },
+  "80002": {
+    "exchange": {
+      "address": ""
+    },
+    "DNV": {
+      "address": ""
+    },
+    "mETH": {
+      "address": ""
+    },
+    "mDAI": {
+      "address": ""
+    },
+    "explorerURL": "https://amoy.polygonscan.com/"
   }
 }
